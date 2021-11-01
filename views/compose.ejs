@@ -1,0 +1,18 @@
+<%- include("partials/header"); -%>
+
+<h1>Compose</h1>
+<form action="/compose" method="post">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input class="form-control" type="text" id="title" name="postTitle">
+    <label for="message" style="margin-top: 12px;">Post</label>
+    <textarea class="form-control" name="postContent" rows="5" cols="80"></textarea>
+  </div>
+  <button class="btn btn-primary" type="submit" name="button">Publish</button>
+</form>
+
+<% if (postError === true) { %>
+  <script>alert("Sorry, your post title matches an existing post. Please try again.")</script>
+<% } %>
+
+<%- include("partials/footer"); -%>

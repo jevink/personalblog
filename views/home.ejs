@@ -1,0 +1,24 @@
+<%- include("partials/header"); -%>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<h1>Home</h1>
+<p><%= startingContent %></p>
+
+<% posts.forEach(function(post) { %>
+  <div class="post-div">
+    <h1><a href="/posts/<%=post._id%>"><%= post.title %></a></h1>
+    <p class="post-p"><%= post.content %></p>
+    <a class="read-more-btn" href="/posts/<%=post._id%>">[Read More]</a>
+  </div>
+<% }); %>
+
+<script type="text/javascript">
+  $('.post-div').each(function(i, obj) {
+    if (obj.children[1].clientHeight < 48) { // post-p
+      $(obj.children[2]).hide(); // read-more-btn
+    }
+  });
+</script>
+
+<%- include("partials/footer"); -%>
